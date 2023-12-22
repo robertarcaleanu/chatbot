@@ -1,0 +1,6 @@
+# requirements.txt
+streamlit
+polars
+os
+langchain
+openai
