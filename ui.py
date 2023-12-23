@@ -14,7 +14,7 @@ def create_ui(openai_api_key):
     # db = create_vectorstore.create_vectorstore(openai_api_key)
 
     with st.form('my_form'):
-        text = st.text_area('Ask a question:', 'What do you want to know about airport design?')
+        text = st.text_area('Ask a question:', 'I have a letter code F and number code 4, what should I consider when designing the runway?')
         submitted = st.form_submit_button('Submit')
         if not openai_api_key.startswith('sk-'):
             st.warning('Please enter your OpenAI API key!', icon='⚠')
