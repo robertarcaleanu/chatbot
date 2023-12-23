@@ -4,3 +4,5 @@ os
 langchain
 openai
 pypdf
+tiktoken
+faiss-cpu

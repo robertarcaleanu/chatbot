@@ -1,4 +1,4 @@
-from langchain.vectorstores import Chroma
+from langchain.vectorstores import Chroma, FAISS
 from langchain.document_loaders import TextLoader, PyPDFLoader
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
@@ -20,16 +20,16 @@ def create_vectorstore(api_key, FILE_PATH, DB_PATH):
         loader = PyPDFLoader(FILE_PATH)
         docs = loader.load_and_split()
 
-        # Split the document into chunks
-        # text_splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size = 500)
-        # docs = text_splitter.split_documents(documents=documents)
-
         # Embed the documents
         embedding_function = OpenAIEmbeddings(openai_api_key=api_key)
-        db = Chroma.from_documents(docs, embedding_function, persist_directory=DB_PATH)
-        db.persist()
+        # db = Chroma.from_documents(docs, embedding_function, persist_directory=DB_PATH)
+        # db.persist()
+        db = FAISS.from_documents(docs, embedding_function)
+        db.save_local(DB_PATH)
+        
     else:
         embedding_function = OpenAIEmbeddings(openai_api_key=api_key)
-        db = Chroma(persist_directory=DB_PATH, embedding_function=embedding_function)
+        # db = Chroma(persist_directory=DB_PATH, embedding_function=embedding_function)
+        db = FAISS.load_local(DB_PATH, embedding_function)
 
     return db

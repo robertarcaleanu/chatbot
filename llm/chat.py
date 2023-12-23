@@ -43,7 +43,7 @@ def use_retriever(chat, db, question):
     """
     compressor = LLMChainExtractor.from_llm(chat)
     compression_retriever = ContextualCompressionRetriever(base_compressor=compressor,
-                                                           base_retriever=db.as_retriver())
+                                                           base_retriever=db.as_retriever())
     
     compressed_docs = compression_retriever.get_relevant_documents(question)
     
