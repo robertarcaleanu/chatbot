@@ -16,6 +16,7 @@ def create_vectorstore(api_key, FILE_PATH, DB_PATH):
     
     # We create vector store only if we don't have it
     if not (os.path.exists(DB_PATH) and os.path.isdir(DB_PATH)):
+        print("==========creating vectorstore==========")
         # Load the data
         loader = PyPDFLoader(FILE_PATH)
         docs = loader.load_and_split()
