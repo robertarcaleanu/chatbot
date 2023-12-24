@@ -33,19 +33,3 @@ def define_chat(question, api_key, context):
     chat = ChatOpenAI(openai_api_key=api_key,temperature=0)
 
     return chat(request)
-
-# def use_retriever(chat, db, question):
-#     """
-#     This function looks for similarities within the vector data base, obtains the similar documents and provides an anwser
-
-#         - chat: Chat model
-#         - db: vector database
-#         - question: what we want to ask the chat
-#     """
-#     compressor = LLMChainExtractor.from_llm(chat)
-#     compression_retriever = ContextualCompressionRetriever(base_compressor=compressor,
-#                                                            base_retriever=db.as_retriever())
-    
-#     compressed_docs = compression_retriever.get_relevant_documents(question)
-    
-#     return compressed_docs[0].page_content

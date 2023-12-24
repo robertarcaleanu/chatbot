@@ -1,7 +1,6 @@
-from llm import create_vectorstore, initiate_chat
-
 import streamlit as st
-import os
+
+from llm import create_vectorstore, initiate_chat
 
 def create_ui(openai_api_key, FILE_PATH, DB_PATH):
     """
@@ -26,8 +25,5 @@ def create_ui(openai_api_key, FILE_PATH, DB_PATH):
 
             # Define chat
             chat_instance = initiate_chat.define_chat(question, openai_api_key, context)
-
-            # Get response
-            # response = chat.use_retriever(chat_instance, db, question)
 
             st.info(chat_instance)
