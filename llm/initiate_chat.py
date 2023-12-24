@@ -14,7 +14,7 @@ def define_chat(question, api_key, context):
         - question: question that we want to ask the chat
         - api_key: OpenAI API Key
     """
-
+    print("========== chat is initialized ==========")
     # System template
     system_template = "As an aerospace engineer, you are tasked with assisting users in addressing inquiries related to airport design"
     system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)

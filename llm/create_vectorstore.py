@@ -39,6 +39,8 @@ def create_vectorstore(api_key, FILE_PATH, DB_PATH):
 
 
 def find_similarities(db, question):
+    print("========== context is reviewed ==========")
+    print(db)
     similar_docs = db.similarity_search(question)
     context = [doc.page_content for doc in similar_docs]
 
