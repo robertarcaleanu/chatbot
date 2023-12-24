@@ -35,3 +35,10 @@ def create_vectorstore(api_key, FILE_PATH, DB_PATH):
         db = FAISS.load_local(DB_PATH, embedding_function)
 
     return db
+
+
+def find_similarities(db, question):
+    similar_docs = db.similarity_search(question)
+    context = [doc.page_content for doc in similar_docs]
+
+    return ' '.join(context)
