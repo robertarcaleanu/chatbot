@@ -1,10 +1,18 @@
-## Chatbot
+# Chatbot
 
-This project consists of creating a chatbot using the following tools:
+This project consists of creating a chatbot using the following tools and concepts:
+* **Tools**
+  * Streamlit
+  * Langchain
+  * OpeanAI API (free tier)
+* **Concepts**
+  * RAG
+  * LLM
+  * Vector Database
 
-* Streamlit
-* Langchain
-* OpeanAI API (free tier)
+## Tools
+
+See below the description of the tools that have been used for this personal project.
 
 ### Streamlit
 
@@ -19,4 +27,14 @@ LangChain is an open-source Python framework designed to simplify the developmen
 
 ### OpenAI API
 
-For this project, we are using the OpenAI API (free tier). In this case, we can obtain the API key visiting [this](https://platform.openai.com/docs/overview) page.
+For this project, we are using the OpenAI API (free tier). In this case, we can obtain the API key visiting [this](https://platform.openai.com/docs/overview) page. Be aware that the free tier might be limited.
+
+## Step-by-step develoment
+
+This section contains step-by-step overview of how this project has been developed.
+
+### User interface
+
+### Chat model
+
+### Adding additioanal knowledge using RAG
