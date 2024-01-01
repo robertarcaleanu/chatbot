@@ -6,3 +6,4 @@ openai
 pypdf
 tiktoken
 faiss-cpu
+sentence-transformers

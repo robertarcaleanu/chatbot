@@ -8,7 +8,7 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 FILE_PATH = os.getenv('FILE_PATH')
 DB_PATH = os.getenv('DB_PATH')
 
-question = 'What is the recommended longitudinal slope on a runway for code number 3?'
+question = 'What is the recommended longitudinal slope on a runway for code number 4?'
 db = create_vectorstore.create_vectorstore(openai_api_key, FILE_PATH, DB_PATH)
 
 context = create_vectorstore.find_similarities(db, question)
