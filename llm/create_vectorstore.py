@@ -1,6 +1,5 @@
 from langchain.vectorstores import FAISS
 from langchain.document_loaders import TextLoader
-from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 
@@ -36,7 +35,6 @@ def create_vectorstore(api_key, FILE_PATH, DB_PATH):
         
     else:
         print("========== vectorstore is loading ==========")
-        embedding_function = OpenAIEmbeddings(openai_api_key=api_key)
         # db = Chroma(persist_directory=DB_PATH, embedding_function=embedding_function)
         db = FAISS.load_local(DB_PATH, embedding_function)
 

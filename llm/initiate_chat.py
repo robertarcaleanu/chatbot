@@ -25,11 +25,12 @@ def define_chat(question, api_key, context):
 
     # Compile to chat
     chat_prompt = ChatPromptTemplate.from_messages([system_message_prompt, human_message_prompt])
+    chat_prompt = ChatPromptTemplate.from_messages([ human_message_prompt])
 
     # Insert variables
     request = chat_prompt.format_prompt(question_request=question, context=context).to_messages()
 
     # Chat request
-    chat = ChatOpenAI(openai_api_key=api_key,temperature=0)
+    chat = ChatOpenAI(openai_api_key=api_key,temperature=0, model='gpt-3.5-turbo')
 
     return chat(request)
