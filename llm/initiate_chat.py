@@ -47,11 +47,12 @@ def define_chat_llama(question: str, context: str) -> str:
     print("========== chat is initialized ==========")
     llm = CTransformers(model="TheBloke/Llama-2-7B-Chat-GGML",
                         model_file = 'llama-2-7b-chat.ggmlv3.q2_K.bin', 
-                        callbacks=[StreamingStdOutCallbackHandler()])
+                        callbacks=[StreamingStdOutCallbackHandler()],
+                        config={'temperature': 0})
     
     template = """
     [INST] <<SYS>>
-    As an aerospace engineer, you are tasked with assisting users in addressing inquiries related to airport design. The answer must be concise.
+    You are tasked with assisting users in addressing inquiries related to airport design using the additioanl context provided. The answer must be concise.
     <</SYS>>
     {text}[/INST]
     """
