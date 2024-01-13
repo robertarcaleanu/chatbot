@@ -7,6 +7,10 @@ from langchain.prompts import (
 from langchain.retrievers import ContextualCompressionRetriever
 from langchain.retrievers.document_compressors import LLMChainExtractor 
 
+from langchain.llms import CTransformers
+from langchain import PromptTemplate, LLMChain
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+
 def define_chat(question, api_key, context):
     """
     This function creates the chat using the OpenAI API
@@ -34,3 +38,28 @@ def define_chat(question, api_key, context):
     chat = ChatOpenAI(openai_api_key=api_key,temperature=0, model='gpt-3.5-turbo')
 
     return chat(request)
+
+
+def define_chat_llama(question: str, context: str) -> str:
+    """
+    This function creates an instance of the Llama2 GGML (it runs locally on the CPU)
+    """
+    print("========== chat is initialized ==========")
+    llm = CTransformers(model="TheBloke/Llama-2-7B-Chat-GGML",
+                        model_file = 'llama-2-7b-chat.ggmlv3.q2_K.bin', 
+                        callbacks=[StreamingStdOutCallbackHandler()])
+    
+    template = """
+    [INST] <<SYS>>
+    As an aerospace engineer, you are tasked with assisting users in addressing inquiries related to airport design. The answer must be concise.
+    <</SYS>>
+    {text}[/INST]
+    """
+
+    prompt = PromptTemplate(template=template, input_variables=["text"])
+    llm_chain = LLMChain(prompt=prompt, llm=llm)
+
+    input = question + f"\n You must use this extra context:\n{context}"
+    response = llm_chain.invoke(input)
+
+    return response['text']
