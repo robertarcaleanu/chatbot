@@ -11,7 +11,7 @@ from langchain.llms import CTransformers
 from langchain import PromptTemplate, LLMChain
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
-def define_chat(question, api_key, context):
+def define_chat(question: str, api_key: str, context: str) -> str:
     """
     This function creates the chat using the OpenAI API
     

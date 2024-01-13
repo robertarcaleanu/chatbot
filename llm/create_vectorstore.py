@@ -5,7 +5,7 @@ from langchain.text_splitter import CharacterTextSplitter
 
 import os
 
-def create_vectorstore(api_key, FILE_PATH, DB_PATH):
+def create_vectorstore(FILE_PATH: str, DB_PATH: str):
     """
     This function creates the vectorstore if it doesn't exist. Otherwise, it loads it
 
@@ -41,7 +41,10 @@ def create_vectorstore(api_key, FILE_PATH, DB_PATH):
     return db
 
 
-def find_similarities(db, question):
+def find_similarities(db, question: str) -> str:
+    """
+    This function retuns the context based on the similarities with the question
+    """
     print("========== context is reviewed ==========")
     print(db)
     similar_docs = db.similarity_search(question)

@@ -11,7 +11,7 @@ def create_ui(openai_api_key, FILE_PATH, DB_PATH):
 
     # openai_api_key = st.sidebar.text_input('OpenAI API Key')
     # Retrieve data
-    db = create_vectorstore.create_vectorstore(openai_api_key, FILE_PATH, DB_PATH)
+    db = create_vectorstore.create_vectorstore(FILE_PATH, DB_PATH)
 
     with st.form('my_form'):
         question = st.text_area('Ask a question:', 'What is the recommended longitudinal slope on a runway for code number 3?')
@@ -24,6 +24,6 @@ def create_ui(openai_api_key, FILE_PATH, DB_PATH):
             context = create_vectorstore.find_similarities(db, question)
 
             # Define chat
-            chat_instance = initiate_chat.define_chat(question, openai_api_key, context)
+            chat_instance = initiate_chat.define_chat_llama(question, context)
 
             st.info(chat_instance)
