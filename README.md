@@ -4,11 +4,13 @@ This project consists of creating a chatbot using the following tools and concep
 * **Tools**
   * Streamlit
   * Langchain
-  * OpeanAI API (free tier)
+  * OpeanAI API (free tier) + Llama2
 * **Concepts**
   * RAG
   * LLM
   * Vector Database
+
+**_You can see a demo [here](https://drive.google.com/file/d/1fkwpc55DAhUzZvblGIUhDrKMo6YKUpSV/view?usp=sharing)_**
 
 ## Tools
 
@@ -27,7 +29,9 @@ LangChain is an open-source Python framework designed to simplify the developmen
 
 ### OpenAI API
 
-For this project, we are using the OpenAI API (free tier). In this case, we can obtain the API key visiting [this](https://platform.openai.com/docs/overview) page. Be aware that the free tier might be limited.
+For this project, we intent to use the OpenAI API (free tier). In this case, we can obtain the API key visiting [this](https://platform.openai.com/docs/overview) page. Be aware that the free tier might be limited.
+
+Due to the limitations with the free tier, `Llama-2-7B-Chat-GGML` has been used for this project, which is open-source and can be executed using the CPU. See [this](https://www.youtube.com/watch?v=yhECvKMu8kM&t=4s&ab_channel=1littlecoder) video for more details on the LLM implementation.
 
 ## Step-by-step develoment
 
